@@ -1,5 +1,7 @@
 {% extends "core/base.html" %}
-    {% block title %}Web Scraping{% endblock %}
+{% block title %}Web Scraping{% endblock %}
+{% load bootstrap5 %}
+
 
 {% block content %}
 
@@ -13,14 +15,103 @@
 </script>
 <div class=" px-6">
     <h3 class="mt-4">Web Scraping Task</h3>
-    <p class="text-secondary p-0 m-0">Please select the website you want to scrape</p>
-    <p class="text-secondary p-0 m-0">Please select the category for the data to scrape</p>
-    <form method="post" action="." onSubmit="return onSubmit();">
+    <p class="text-secondary p-0 m-0">Please select the website you want to scrape & Category</p>
+    <form method="post" action="." class="mt-3" onSubmit="return onSubmit();">
         {% csrf_token %}
-        <div class="autosize">
-            {{ form.as_p }}
+        
+        <div class="row">
+            {% for field in form %}
+                <div class="col-sm-6">
+                    {% bootstrap_field field %}
+                </div>
+            {% endfor %}
+            <!-- <div class="col-sm-6">
+                <div class="mb-3"><label class="form-label" for="id_subcategory">Sub Category</label>
+                    <select name="subcategory" class="form-select" title="" id="id_subcategory" required>
+                        <option value="" selected="">---------</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="mb-3"><label class="form-label" for="id_item">Items</label>
+                    <select name="item" class="form-select" title="" id="id_item" required>
+                        <option value="" selected="">---------</option>
+                    </select>
+                </div>
+            </div> -->
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        // Your JSON data (replace this with your actual JSON data)
+        var jsonData = {{ item_list|safe }}
+
+        // Populate Category dropdown
+        // $.each(jsonData, function(key, value) {
+        //     $('#id_category').append($('<option>', {
+        //         value: key,
+        //         text: key
+        //     }));
+        // });
+
+        // Show Sub Category dropdown when Category is selected
+        $('#id_category').on('change', function() {
+            var selectedCategory = $(this).val();
+            $('#id_subcategory').empty(); // Clear previous options
+            $('#id_item').empty();
+
+            // Populate Sub Category dropdown based on selected Category
+            if (selectedCategory !== '') {
+                $('#id_subcategory').append($('<option>', {
+                    value: '',
+                    text: '---------'
+                }));
+
+                $('#id_item').append($('<option>', {
+                    value: '',
+                    text: '---------'
+                }));
+
+                $.each(jsonData[selectedCategory], function(key, value) {
+                    $('#id_subcategory').append($('<option>', {
+                        value: key,
+                        text: key
+                    }));
+                });
+            }
+        });
+
+        // Show Items dropdown when Sub Category is selected
+        $('#id_subcategory').on('change', function() {
+            var selectedCategory = $('#id_category').val();
+            var selectedSubCategory = $(this).val();
+            $('#id_item').empty(); // Clear previous options
+
+
+
+            // Populate Items dropdown based on selected Category and Sub Category
+            if (selectedSubCategory !== '') {
+                $('#id_item').append($('<option>', {
+                    value: '',
+                    text: '---------'
+                }));
+
+                $.each(jsonData[selectedCategory][selectedSubCategory], function(index, item) {
+                    $('#id_item').append($('<option>', {
+                        value: item.item_url,
+                        text: item.item_name
+                    }));
+                });
+            }
+        });
+    });
+</script>
+
 {% endblock %}

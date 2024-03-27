@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import RegexValidator
+from webscrape.hktdc import HKTDC
+import json
 
 class Lead(models.Model):
     LOW='low'
@@ -51,18 +53,35 @@ class Lead(models.Model):
         verbose_name_plural = "Leads"
         verbose_name = "Lead"
         
+
+def get_choices():
+    hktdc = HKTDC()
+    item_list = hktdc.get_item_list()
+    new_item_list = []
+    for i in range(len(item_list)):
+        item = item_list[i]
+        if item[0] not in new_item_list:
+            new_item_list.append(item[0])
+    new_item_list = [(item, item) for item in new_item_list]
+    return new_item_list
+
 class Webscraping(models.Model):
+    CATEGORY_CHOICES = get_choices()
     source_url = models.CharField(max_length=100)
     submitted_at = models.DateTimeField(auto_now_add=True)
     submitted_by = models.ForeignKey(User, related_name='webscraping',on_delete=models.CASCADE)
-    category = models.CharField(max_length=100)
-    
+    category = models.CharField(max_length=255, null=True, blank=True, choices=CATEGORY_CHOICES)
+    subcategory = models.CharField(max_length=255, null=True, blank=True)
+    item = models.CharField(max_length=255, null=True, blank=True)
 
-class HKTDC(models.Model):
-    main_category = models.CharField(max_length=100)
-    sub_category = models.CharField(max_length=100)
-    sub_sub_category = models.CharField(max_length=100)
+
+class HKTDCRequest(models.Model):
+    category = models.CharField(max_length=100)
+    subcategory = models.CharField(max_length=100)
+    item = models.CharField(max_length=100)
     source_url = models.CharField(max_length=100)
     submitted_at = models.DateTimeField(auto_now_add=True)
-    submitted_by = models.ForeignKey(User, related_name='hktdc',on_delete=models.CASCADE)
+    submitted_by = models.ForeignKey(User, related_name='hktdc_request',on_delete=models.CASCADE)
     
+    def scrape_suppliers(self):
+        print("Scraping started...")
