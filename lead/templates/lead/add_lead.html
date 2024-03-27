@@ -1,0 +1,14 @@
+{% extends "core/base.html" %}
+    {% block title %}Add Lead{% endblock %}
+    
+{% block content %}
+<div class="py-6 px-6 space-y-15">
+    <h1 class="text-2xl font-bold text-purple-400">Add Lead</h1>
+    <div class="flex flex-col space-y-20 mt-4 mb-4">
+     
+          <a href="{% url 'webscraping' %}" class="font-bold hover:bg-purple-400 bg-teal-400 text-white px-8 py-4 rounded-md">Web Scraping</a>
+          <a href="{% url 'manual_lead' %}" class="font-bold hover:bg-purple-400 bg-orange-400 text-white px-8 py-4 rounded-md">Manual Entry</a>
+     
+      </div>
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "core/base.html" %}
+
+{% block title %}Add Lead{% endblock %}
+
+{% block content %}
+<div class="flex items-center justify-between py-4 px-6">
+    <nav>
+        <ul class="flex items-center space-x-4">
+            <li><a href="{% url 'add_lead' %}" class="hover:bg-purple-500 hover:text-white px-4 py-6 rounded-md">Add Leads</a></li>
+            <li><a href="{% url 'leads_list' %}" class="hover:bg-orange-500 hover:text-white px-4 py-6 rounded-md">Display Leads</a></li>
+            <li><a href="{% url 'add_lead' %}" class="hover:bg-yellow-500 hover:text-white px-4 py-6 rounded-md">Manage Leads</a></li>
+        </ul>
+    </nav>
+
+    <h1 class="text-2xl font-bold">Add Lead</h1>
+</div>
+
+
+{% endblock %}

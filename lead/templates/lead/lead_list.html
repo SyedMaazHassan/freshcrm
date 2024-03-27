@@ -1,0 +1,36 @@
+{% extends "core/base.html" %}
+{% block title %}Leads{% endblock %}
+{% block content %}
+    
+    <div class="grid grid-cols-6 gap-2">
+        <div class="bg-gray-200 px-2 py-.5">Company Name</div>
+        <div class="bg-gray-200 px-2 py-.5">Email</div>
+        <div class="bg-gray-200 px-2 py-.5">Website</div>
+        <div class="bg-gray-200 px-2 py-.5">Phone</div>
+        <div class="bg-gray-200 px-2 py-.5">Created At</div>
+        <div class="bg-gray-200 px-2 py-.5">Action</div>
+        {% for lead in leads %}
+            <div class="border px-2 py-.5">{{ lead.company_name }}</div>
+            <div class="border px-2 py-.5">{{ lead.email }}</div>
+            <div class="border px-2 py-.5">{{ lead.website }}</div>
+            <div class="border px-2 py-.5">{{ lead.phone }}</div>
+            <div class="border px-2 py-.5">{{ lead.created_at }}</div>
+            <div class="border px-2 py-.5">{{ lead.action }}</div>
+        {% endfor %}
+    </div>
+
+    <div class="flex justify-center mt-4 space-x-45">
+        {% if leads.has_previous %}
+            <a href="?page={{ leads.previous_page_number }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-4">Previous</a>
+        {% else %}
+            <span class="bg-gray-300 text-white font-bold py-2 px-4 rounded mr-14 cursor-not-allowed">Previous</span>
+        {% endif %}
+        
+        {% if leads.has_next %}
+            <a href="?page={{ leads.next_page_number }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-1 rounded">Next</a>
+        {% else %}
+            <a href="?page={{ leads.next_page_number }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-1 rounded">Next</a>
+        {% endif %}
+        {#<a href="?page={{ leads.paginator.num_pages }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-1 rounded">Last</a>#}
+    </div>
+{% endblock %}
