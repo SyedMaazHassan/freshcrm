@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'dashboard',
     'lead',
     'userprofile',
+    'bootstrap5',
+    'django_bootstrap5',
 ]
 
 MIDDLEWARE = [

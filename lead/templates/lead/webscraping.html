@@ -11,17 +11,16 @@
         return True
     }
 </script>
-<div class="py-6 px-6">
-    <h1 class="text-2xl font-bold">Web Scraping Task</h1>
-    <p class="text-gray-500">Please select the website you want to scrape</p>
-    <p class="text-gray-500">Please select the category for the data to scrape</p>
+<div class=" px-6">
+    <h3 class="mt-4">Web Scraping Task</h3>
+    <p class="text-secondary p-0 m-0">Please select the website you want to scrape</p>
+    <p class="text-secondary p-0 m-0">Please select the category for the data to scrape</p>
     <form method="post" action="." onSubmit="return onSubmit();">
         {% csrf_token %}
         <div class="autosize">
             {{ form.as_p }}
-            
-            
-        <button type="submit" class="py-3 px-3 rounded bg-teal-500 text-white">Submit</button>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
 {% endblock %}

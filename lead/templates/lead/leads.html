@@ -3,16 +3,39 @@
 {% block title %}Add Lead{% endblock %}
 
 {% block content %}
-<div class="flex items-center justify-between py-4 px-6">
-    <nav>
-        <ul class="flex items-center space-x-4">
-            <li><a href="{% url 'add_lead' %}" class="hover:bg-purple-500 hover:text-white px-4 py-6 rounded-md">Add Leads</a></li>
-            <li><a href="{% url 'leads_list' %}" class="hover:bg-orange-500 hover:text-white px-4 py-6 rounded-md">Display Leads</a></li>
-            <li><a href="{% url 'add_lead' %}" class="hover:bg-yellow-500 hover:text-white px-4 py-6 rounded-md">Manage Leads</a></li>
-        </ul>
-    </nav>
+<h3 class="font-bold mt-4">Add Lead</h3>
+<div class="row">
+    <div class="col-md-4 my-3">
+        <a href="{% url 'add_lead' %}" class="text-dark text-decoration-none">
+            <div class="bg-light border add-lead-card d-flex align-items-center justify-content-center p-4 rounded-5">
+                <div class="d-flex align-items-center">
+                    <h5 class="p-0 m-0"> Add Leads</h5>
+                    <i class="material-icons ms-3 text-secondary">add_circle</i>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-4 my-3">
+        <a href="{% url 'leads_list' %}" class="text-dark text-decoration-none">
+            <div class="bg-light border add-lead-card d-flex align-items-center justify-content-center p-4 rounded-5">
+                <div class="d-flex align-items-center">
+                    <h5 class="p-0 m-0"> Display Leads</h5>
+                    <i class="material-icons ms-3 text-secondary">view_list</i>
+                </div>
+            </div>
+        </a>
+    </div>
 
-    <h1 class="text-2xl font-bold">Add Lead</h1>
+    <div class="col-md-4 my-3">
+        <a href="{% url 'add_lead' %}" class="text-dark text-decoration-none">
+            <div class="bg-light border add-lead-card d-flex align-items-center justify-content-center p-4 rounded-5">
+                <div class="d-flex align-items-center">
+                    <h5 class="p-0 m-0"> Manage Leads</h5>
+                    <i class="material-icons ms-3 text-secondary">edit_note</i>
+                </div>
+            </div>
+        </a>
+    </div>
 </div>
 
 

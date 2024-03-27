@@ -1,14 +1,28 @@
 {% extends "core/base.html" %}
     {% block title %}Add Lead{% endblock %}
-    
 {% block content %}
-<div class="py-6 px-6 space-y-15">
-    <h1 class="text-2xl font-bold text-purple-400">Add Lead</h1>
-    <div class="flex flex-col space-y-20 mt-4 mb-4">
-     
-          <a href="{% url 'webscraping' %}" class="font-bold hover:bg-purple-400 bg-teal-400 text-white px-8 py-4 rounded-md">Web Scraping</a>
-          <a href="{% url 'manual_lead' %}" class="font-bold hover:bg-purple-400 bg-orange-400 text-white px-8 py-4 rounded-md">Manual Entry</a>
-     
-      </div>
+
+<h3 class="font-bold mt-4">Add Lead</h3>
+<div class="row">
+    <div class="col-md-6 my-3">
+        <a href="{% url 'webscraping' %}" class="text-dark text-decoration-none">
+            <div class="bg-light border add-lead-card d-flex align-items-center justify-content-center p-4 rounded-5">
+                <div class="d-flex align-items-center">
+                    <h5 class="p-0 m-0">Web Scraping</h5>
+                    <i class="material-icons ms-3 text-secondary">language</i>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-6 my-3">
+        <a href="{% url 'manual_lead' %}" class="text-dark text-decoration-none">
+            <div class="bg-light border add-lead-card d-flex align-items-center justify-content-center p-4 rounded-5">
+                <div class="d-flex align-items-center">
+                    <h5 class="p-0 m-0"> Manual Entry</h5>
+                    <i class="material-icons ms-3 text-secondary">add_circle</i>
+                </div>
+            </div>
+        </a>
+    </div>
 </div>
 {% endblock %}

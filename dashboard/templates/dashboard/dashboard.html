@@ -3,27 +3,32 @@
 {% block title %}FreshCRM Dashboard{% endblock %}
 
 {% block content %}
-<div class="min-h-screen flex flex-col sm:flex-row justify-between gap-4">
-    <div class="bg-gray-100 w-full sm:w-1/2 p-4 rounded-lg shadow-md flex flex-col">
-        <div class="flex items-center">
-            <h2 class="text-xl font-bold text-gray-800 mb-2">Top Ten Sources of Data Collection</h2>
-            <div class="ml-4">
-                <select class="border rounded px-2 py-1 text-gray-600">
-                    <option value="daily">Daily</option>
-                    <option value="weekly">Weekly (Default)</option>
-                    <option value="monthly">Monthly</option>
-                </select>
+<div class="">
+    <div class="">
+    <h3 class="mt-4">Top Ten Sources of Data Collection</h3>
+        <div class="d-flex bg-light p-3 rounded-5 border mt-3 align-items-center justify-content-between flex-wrap">
+            <div class="d-flex align-items-center flex-wrap">
+                <div class="mx-3">
+                    <span class=" text-secondary">Type</span>
+                    <select class=" form-control mt-1">
+                        <option value="daily">Daily</option>
+                        <option value="weekly">Weekly (Default)</option>
+                        <option value="monthly">Monthly</option>
+                    </select>
+                </div>
+                <div class="mx-3">
+                    <span class=" text-secondary">Start Date</span>
+                    <input type="date" class="mt-1 border form-control rounded px-2 py-1">
+                </div>
+                <div class="mx-3">
+                    <span class=" text-secondary">End Date</span>
+                    <input type="date" class="mt-1 border form-control rounded px-2 py-1">
+                </div>
             </div>
-            <div class="flex items-center ml-4 text-gray-600">
-                <span class="mr-2">Start Date:</span>
-                <input type="date" class="border rounded px-2 py-1">
-            </div>
-            <div class="flex items-center ml-4 text-gray-600">
-                <span class="mr-2">End Date:</span>
-                <input type="date" class="border rounded px-2 py-1">
-            </div>
+            <button class="btn btn-primary">Search</button>
         </div>
-        <canvas id="myChart" height="250"></canvas>
+        <h5 class="my-4">Canva here</h5>
+        <canvas id="myChart" height="20"></canvas>
         <script>
             // Your chart implementation here using real data
             const ctx = document.getElementById('myChart').getContext('2d');
@@ -50,28 +55,51 @@
         </script>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4 sm:mt-0">
-        <div class="bg-white rounded-lg shadow-md p-4 text-center">
-            <h3 class="text-lg font-bold text-gray-800 mb-2">Total Leads</h3>
-            <p class="text-2xl font-bold text-gray-900">5,230</p>
+    <div class="row">
+        <div class="col-md-6 my-3">
+            <div class="card rounded-5 border-0 position-relative" style="background-color: rgba(158, 255, 255, 0.445);">
+                <div class="card-body">
+                    <h4 class="text-lg font-bold text-gray-800 mb-2" style="color: rgb(0, 82, 82);">Total Leads</h4>
+                    <p class="fs-4 p-0 m-0 font-bold" style="color: rgb(0, 116, 116);">5,230</p>
+                </div>
+                <i class="material-icons position-absolute card-icon" style="right: 20px; top: 20px; color: rgb(0, 116, 116);">leaderboard</i>
+            </div>
         </div>
-        <div class="bg-teal-500 rounded-lg shadow-md p-4 text-white text-center">
-            <h3 class="text-lg font-bold mb-2">Submitted Tasks</h3>
-            <p class="text-2xl font-bold">245</p>
+        <div class="col-md-6 my-3">
+            <div class="card rounded-5 position-relative border-0" style="background-color: rgba(250, 133, 143, 0.226);"> 
+                <div class="card-body">
+                    <h4 class="text-lg font-bold text-gray-800 mb-2" style="color: rgb(94, 0, 8)">Submitted Tasks</h4>
+                    <p class="fs-4 p-0 m-0 font-bold" style="color: rgb(150, 0, 12)">5,230</p>
+                </div>
+                <i class="material-icons position-absolute card-icon" style="right: 20px; top: 20px; color: rgb(150, 0, 12);">task_alt</i>
+            </div>
         </div>
-        <div class="bg-orange-500 rounded-lg shadow-md p-4 text-white text-center">
-            <h3 class="text-lg font-bold mb-2">Scheduled Tasks</h3>
-            <p class="text-2xl font-bold">132</p>
+        <div class="col-md-6 my-3">
+            <div class="card rounded-5 border-0 position-relative" style="background-color: rgba(70, 50, 158, 0.13);">
+                <div class="card-body">
+                    <h4 class="text-lg font-bold text-gray-800 mb-2" style="color: rgb(56, 29, 179)">Scheduled Tasks</h4>
+                    <p class="fs-4 p-0 m-0 font-bold" style="color: rgb(90, 66, 196)">5,230</p>
+                </div>
+                <i class="material-icons position-absolute card-icon" style="right: 20px; top: 20px; color: rgb(90, 66, 196);">schedule</i>
+            </div>
         </div>
-        <div class="bg-green-500 rounded-lg shadow-md p-4 text-white text-center">
-            <h3 class="text-lg font-bold mb-2">Email Sent</h3>
-            <p class="text-2xl font-bold">310</p>
+        <div class="col-md-6 my-3">
+            <div class="card rounded-5 border-0 position-relative" style="background-color: rgba(133, 250, 182, 0.226);">
+                <div class="card-body">
+                    <h4 class="text-lg font-bold text-gray-800 mb-2" style=" color: rgb(0, 124, 52)">Email Sent</h4>
+                    <p class="fs-4 p-0 m-0 font-bold " style=" color: rgb(0, 124, 52)">5,230</p>
+                </div>
+                <i class="material-icons position-absolute card-icon" style="right: 20px; top: 20px; color: rgb(0, 124, 52);">mail</i>
+            </div>
         </div>
     </div>
 </div>
 
-<div class="bg-gray-100 p-4 flex justify-center text-gray-600">
-    &copy; 2024 FreshCRM | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+<div class="bg-gray-100">
+    <div class=" p-4 flex justify-center text-gray-600 mt-5 rounded-lg">
+        &copy; 2024 FreshCRM | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+    </div>
+
 </div>
 
 {% endblock %}

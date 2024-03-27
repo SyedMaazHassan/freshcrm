@@ -1,10 +1,25 @@
 {% extends "core/base.html" %}
 {% block title %}Sign up{% endblock %}
+{% load bootstrap5 %}
+
+
 {% block content %}
-    <h1>Sign up</h2>
-    <form method="post" action=".">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="py-4 px-6 rounded bg-teal-500 text-white">submit</button>
-    </form>
-{% endblock %}
+    <div class="d-flex align-items-center justify-content-center">
+        <div style="height: 100vh;" class="d-flex align-items-center my-auto w-100">
+            <div class="row w-100">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div class="bg-light text-start p-4 text-center border rounded-5 w-100">
+                        <h3>Register Account!👋</h3>
+                        <form method="post" action="." class="mt-4">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit" class="btn btn-primary ">Register</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

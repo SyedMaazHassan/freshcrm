@@ -1,19 +1,29 @@
 {% extends "core/base.html" %}
     {% block title %}Add Lead{% endblock %}
 
+{% load bootstrap5 %}
+
 {% block content %}
 
 
-<div class="py-6 px-6">
-    <h1 class="text-2xl font-bold">Add Lead</h1>
+<div class="py-6 px-6 mb-5">
+    <h3 class="mt-4">Add Lead</h3>
     <form method="post" action="." >
         {% csrf_token %}        
-        <div class="autosize">
-            {{ form.as_p }}
+           <div class="row">
+            {% for field in form %}
+                {% if field.name == "description" %}
+                    <div class="col-md-12">
+                        {% bootstrap_field field %}
+                    </div>
+                {% else %}
+                    <div class="col-md-6">
+                        {% bootstrap_field field %}
+                    </div>
+                {% endif %}
+            {% endfor %}
         </div>
-        <button type="submit" class="py-3 px-3 rounded bg-teal-500 text-white" >submit</button>
-    
-
+        <button type="submit" class="btn btn-primary mt-2" >submit</button>
     </form>
 </div>
 {% endblock %}
