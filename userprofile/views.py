@@ -16,7 +16,8 @@ def signup(request):
             form.save()
             return redirect('/login')
     else:
-        form = UserCreationForm()
+        initial_values = {'username': '', 'password1': '', 'password2':''} 
+        form = UserCreationForm(initial=initial_values)
     return render(request, 'userprofile/signup.html', {'form': form})
 
 def login(request):

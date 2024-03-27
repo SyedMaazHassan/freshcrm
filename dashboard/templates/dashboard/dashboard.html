@@ -4,58 +4,9 @@
 
 {% block content %}
 <div class="">
-    <div class="">
-    <h3 class="mt-4">Top Ten Sources of Data Collection</h3>
-        <div class="d-flex bg-light p-3 rounded-5 border mt-3 align-items-center justify-content-between flex-wrap">
-            <div class="d-flex align-items-center flex-wrap">
-                <div class="mx-3">
-                    <span class=" text-secondary">Type</span>
-                    <select class=" form-control mt-1">
-                        <option value="daily">Daily</option>
-                        <option value="weekly">Weekly (Default)</option>
-                        <option value="monthly">Monthly</option>
-                    </select>
-                </div>
-                <div class="mx-3">
-                    <span class=" text-secondary">Start Date</span>
-                    <input type="date" class="mt-1 border form-control rounded px-2 py-1">
-                </div>
-                <div class="mx-3">
-                    <span class=" text-secondary">End Date</span>
-                    <input type="date" class="mt-1 border form-control rounded px-2 py-1">
-                </div>
-            </div>
-            <button class="btn btn-primary">Search</button>
-        </div>
-        <h5 class="my-4">Canva here</h5>
-        <canvas id="myChart" height="20"></canvas>
-        <script>
-            // Your chart implementation here using real data
-            const ctx = document.getElementById('myChart').getContext('2d');
-            const myChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['Source 1', 'Source 2', 'Source 3', 'Source 4', 'Source 5', 'Source 6', 'Source 7', 'Source 8', 'Source 9', 'Source 10'],
-                    datasets: [{
-                        label: 'Data Collection',
-                        data: [120, 200, 150, 300, 180, 250, 170, 220, 190, 280],
-                        backgroundColor: 'rgba(54, 162, 235, 0.5)',
-                        borderColor: 'rgba(54, 162, 235, 1)',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
-        </script>
-    </div>
 
-    <div class="row">
+    <div class="row mt-4">
+        <h3 class="mb-0">Statstics</h3>
         <div class="col-md-6 my-3">
             <div class="card rounded-5 border-0 position-relative" style="background-color: rgba(158, 255, 255, 0.445);">
                 <div class="card-body">
@@ -93,6 +44,37 @@
             </div>
         </div>
     </div>
+
+    <div class="">
+    <h3 class="mt-4">Top Ten Sources of Data Collection</h3>
+        <div class="d-flex bg-light p-3 rounded-5 border mt-3 align-items-center justify-content-between flex-wrap">
+            <div class="d-flex align-items-center flex-wrap">
+                <div class="mx-3">
+                    <span class=" text-secondary">Type</span>
+                    <select class=" form-control mt-1">
+                        <option value="daily">Daily</option>
+                        <option value="weekly">Weekly (Default)</option>
+                        <option value="monthly">Monthly</option>
+                    </select>
+                </div>
+                <div class="mx-3">
+                    <span class=" text-secondary">Start Date</span>
+                    <input type="date" class="mt-1 border form-control rounded px-2 py-1">
+                </div>
+                <div class="mx-3">
+                    <span class=" text-secondary">End Date</span>
+                    <input type="date" class="mt-1 border form-control rounded px-2 py-1">
+                </div>
+            </div>
+            <button class="btn btn-primary">Search</button>
+        </div>
+        <div class="my-4">
+            <canvas id="myChart" height="100"></canvas>
+        </div>
+     
+    </div>
+
+
 </div>
 
 <div class="bg-gray-100">
@@ -102,4 +84,29 @@
 
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   <script>
+            // Your chart implementation here using real data
+            const ctx = document.getElementById('myChart').getContext('2d');
+            const myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Source 1', 'Source 2', 'Source 3', 'Source 4', 'Source 5', 'Source 6', 'Source 7', 'Source 8', 'Source 9', 'Source 10'],
+                    datasets: [{
+                        label: 'Data Collection',
+                        data: [120, 200, 150, 300, 180, 250, 170, 220, 190, 280],
+                        backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        </script>
 {% endblock %}

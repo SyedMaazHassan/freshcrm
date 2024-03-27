@@ -1,113 +1,238 @@
 {% extends "core/base.html" %}
-
 {% block title %}About FreshCRM{% endblock %}
+{% load static %}
 
 {% block content %}
-<div class="home-page flex flex-col items-center justify-center bg-gradient-to-r from-teal-500 to-blue-500 h-screen text-white py-16">
+<div
+    class="home-page flex flex-col items-center justify-center bg-gradient-to-r from-teal-500 to-blue-500 h-screen text-white py-16">
     <h1 class="text-5xl font-bold mb-8">Unlocking Customer Success Since 2018</h1>
-    <a href="#story" class="inline-block bg-white hover:bg-gray-100 text-teal-500 font-bold py-2 px-4 rounded-md">Learn More</a>
 </div>
 
-<section id="story" class="bg-gray-100 py-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl font-bold text-gray-800 mb-4">Our Story</h2>
-        <p class="text-gray-600">FreshCRM wasn't born from spreadsheets and cold calls. It sprouted from a seed of frustration with clunky, complex CRM systems that choked sales and smothered genuine customer connection. We envisioned a vibrant garden where businesses of all sizes could cultivate meaningful relationships and watch their customers thrive.</p>
+<div class="row">
+    <div class="col-md-6 my-5">
+        <img src="{% static 'images/img1.jpg' %}" class="rounded-5 w-100" alt="">
     </div>
-</section>
+    <div class="col-md-6 my-5">
+        <section id="story" class="bg-gray-100 py-8">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Our Story</h2>
+                <p class="text-gray-600">FreshCRM wasn't born from spreadsheets and cold calls. It sprouted from a seed
+                    of frustration with clunky, complex CRM systems that choked sales and smothered genuine customer
+                    connection. We envisioned a vibrant garden where businesses of all sizes could cultivate meaningful
+                    relationships and watch their customers thrive.</p>
+            </div>
+        </section>
+    </div>
 
-<section id="mission" class="bg-white rounded-lg shadow-md p-8 flex flex-col items-center text-center">
-    <h2 class="text-2xl font-bold text-gray-800 mb-4">Our Mission</h2>
-    <p class="text-gray-600 mb-4">Our mission is to be the sunshine and rain of the CRM world, nourishing businesses with a user-friendly platform that fuels sales agility, fosters customer loyalty, and unlocks unprecedented growth potential. We believe every company deserves a vibrant ecosystem where customer relationships blossom and success blooms.</p>
-</section>
+    <div class="col-md-6 my-5">
+        <section id="story" class="bg-gray-100 py-8">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Our Story</h2>
+                <p class="text-gray-600">FreshCRM wasn't born from spreadsheets and cold calls. It sprouted from a seed
+                    of frustration with clunky, complex CRM systems that choked sales and smothered genuine customer
+                    connection. We envisioned a vibrant garden where businesses of all sizes could cultivate meaningful
+                    relationships and watch their customers thrive.</p>
+            </div>
+        </section>
+    </div>
+    <div class="col-md-6 my-5">
+        <img src="{% static 'images/img2.jpeg' %}" class="rounded-5 w-100" alt="">
+    </div>
 
-<section id="values" class="bg-gray-100 py-8">
+    <div class="col-md-6 my-5">
+        <img src="{% static 'images/img3.webp' %}" class="rounded-5 w-100" alt="">
+    </div>
+    <div class="col-md-6 my-5">
+        <section id="mission" class="bg-white rounded-lg shadow-md p-8 flex flex-col items-center">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Our Mission</h2>
+            <p class="text-gray-600 mb-4">Our mission is to be the sunshine and rain of the CRM world, nourishing
+                businesses with a user-friendly platform that fuels sales agility, fosters customer loyalty, and unlocks
+                unprecedented growth potential. We believe every company deserves a vibrant ecosystem where customer
+                relationships blossom and success blooms.</p>
+        </section>
+    </div>
+</div>
+
+
+
+
+<section id="values" class="bg-gray-100 py-8 mt-5">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl font-bold text-gray-800 mb-4">Our Values</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            <div class="bg-white rounded-md px-4 py-4 shadow-md flex flex-col items-center">
-                <i class="far fa-users text-teal-500 text-3xl mb-2"></i>
-                <h3 class="text-lg font-bold text-gray-800 mb-2">Customer Champions</h3>
-                <p class="text-gray-600">We root for your customers as if they were our own.</p>
+        <h1 class="text-2xl font-bold text-gray-800 mb-4 text-center">Our Values</h1>
+        <div class="row">
+            <div class="col-md-6 my-5">
+                <div class="bg-white rounded-md px-4 py-4 shadow-md flex flex-col items-center">
+                    <i class="far fa-handshake text-teal-500 text-3xl mb-2"></i>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Teamwork & Collaboration</h3>
+                    <p class="text-gray-600">We believe in cross-pollination, empowering your team to collaborate
+                        seamlessly and achieve their full potential.</p>
+                </div>
+                <div class="bg-white rounded-md px-4 py-4 shadow-md flex flex-col items-center">
+                    <i class="far fa-shield-alt text-teal-500 text-3xl mb-2"></i>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Integrity & Transparency</h3>
+                    <p class="text-gray-600">We do business with a clean conscience, building trust with our customers
+                        and community like sturdy tree roots.</p>
+                </div>
             </div>
-            <div class="bg-white rounded-md px-4 py-4 shadow-md flex flex-col items-center">
-                <i class="fa fa-lightbulb text-teal-500 text-3xl mb-2"></i>
-                <h3 class="text-lg font-bold text-gray-800 mb-2">Simplicity & Sproutlings</h3>
-                <p class="text-gray-600">We keep things clear and intuitive, constantly innovating to help your CRM blossom.</p>
+
+            <div class="col-md-6 my-5">
+                <img src="{% static 'images/img4.webp' %}" class="rounded-5 w-100" alt="">
             </div>
-            <div class="bg-white rounded-md px-4 py-4 shadow-md flex flex-col items-center">
-                <i class="far fa-handshake text-teal-500 text-3xl mb-2"></i>
-                <h3 class="text-lg font-bold text-gray-800 mb-2">Teamwork & Collaboration</h3>
-                <p class="text-gray-600">We believe in cross-pollination, empowering your team to collaborate seamlessly and achieve their full potential.</p>
+
+            <div class="col-md-6 my-5">
+                <img src="{% static 'images/img3.jpeg' %}" class="rounded-5 w-100" alt="">
+            </div>
+            <div class="col-md-6 my-5">
+                <div class="bg-white rounded-md px-4 py-4 shadow-md flex flex-col items-center">
+                    <i class="far fa-users text-teal-500 text-3xl mb-2"></i>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Customer Champions</h3>
+                    <p class="text-gray-600">We root for your customers as if they were our own.</p>
+                </div>
+                <div class="bg-white rounded-md px-4 py-4 shadow-md flex flex-col items-center">
+                    <i class="fa fa-lightbulb text-teal-500 text-3xl mb-2"></i>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Simplicity & Sproutlings</h3>
+                    <p class="text-gray-600">We keep things clear and intuitive, constantly innovating to help your CRM
+                        blossom.</p>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-...
-
-            <div class="bg-white rounded-md px-4 py-4 shadow-md flex flex-col items-center">
-            </div>
-            <div class="bg-white rounded-md px-4 py-4 shadow-md flex flex-col items-center">
-                <i class="far fa-shield-alt text-teal-500 text-3xl mb-2"></i>
-                <h3 class="text-lg font-bold text-gray-800 mb-2">Integrity & Transparency</h3>
-                <p class="text-gray-600">We do business with a clean conscience, building trust with our customers and community like sturdy tree roots.</p>
-            </div>
-        </div>
-    </div>
-</section>
 
 
 <section id="why-choose" class="bg-gray-100 py-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl font-bold text-gray-800 mb-4">Why Choose FreshCRM?</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            <div class="bg-white rounded-md px-4 py-4 shadow-md flex flex-col items-center">
-                <i class="far fa-seedling text-teal-500 text-3xl mb-2"></i>
-                <h3 class="text-lg font-bold text-gray-800 mb-2">Effortless User Experience</h3>
-                <p class="text-gray-600">Designed for ease of use, even for non-tech-savvy butterflies.</p>
+        <h1 class="text-2xl font-bold text-gray-800 mb-4 text-center">Why Choose FreshCRM?</h1>
+
+        <div class="row">
+            <div class="col-md-6 my-5">
+                <div class="bg-white rounded-md px-4 py-4 shadow-md flex flex-col items-center">
+                    <i class="far fa-seedling text-teal-500 text-3xl mb-2"></i>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Effortless User Experience</h3>
+                    <p class="text-gray-600">Designed for ease of use, even for non-tech-savvy butterflies.</p>
+                </div>
+                <div class="bg-white rounded-md px-4 py-4 shadow-md flex flex-col items-center">
+                    <i class="far fa-chart-line text-teal-500 text-3xl mb-2"></i>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Powerful Features Bloom</h3>
+                    <p class="text-gray-600">Manage leads, contacts, deals, tasks, and reports like a seasoned
+                        beekeeper.
+                    </p>
+                </div>
+                <div class="bg-white rounded-md px-4 py-4 shadow-md flex flex-col items-center">
+                    <i class="far fa-arrows-alt text-teal-500 text-3xl mb-2"></i>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Grow With Your Needs</h3>
+                    <p class="text-gray-600">Adapts to your changing needs like a flourishing ecosystem.</p>
+                </div>
             </div>
-            <div class="bg-white rounded-md px-4 py-4 shadow-md flex flex-col items-center">
-                <i class="far fa-chart-line text-teal-500 text-3xl mb-2"></i>
-                <h3 class="text-lg font-bold text-gray-800 mb-2">Powerful Features Bloom</h3>
-                <p class="text-gray-600">Manage leads, contacts, deals, tasks, and reports like a seasoned beekeeper.</p>
+            <div class="col-md-6 my-5">
+                <img src="{% static 'images/img1.jpg' %}" class="rounded-5 w-100" alt="">
             </div>
-            <div class="bg-white rounded-md px-4 py-4 shadow-md flex flex-col items-center">
-                <i class="far fa-arrows-alt text-teal-500 text-3xl mb-2"></i>
-                <h3 class="text-lg font-bold text-gray-800 mb-2">Grow With Your Needs</h3>
-                <p class="text-gray-600">Adapts to your changing needs like a flourishing ecosystem.</p>
+
+            <div class="col-md-6 my-5">
+                <img src="{% static 'images/img1.jpg' %}" class="rounded-5 w-100" alt="">
+            </div>
+            <div class="col-md-6 my-5">
+                <div class="bg-white rounded-md px-4 py-4 shadow-md flex flex-col items-center">
+                    <i class="far fa-dollar-sign text-teal-500 text-3xl mb-2"></i>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Budget-Friendly Blooms</h3>
+                    <p class="text-gray-600">Competitively priced plans to suit any budget, from sprouting startups to
+                        towering
+                        enterprises.</p>
+                </div>
+                <div class="bg-white rounded-md px-4 py-4 shadow-md flex flex-col items-center">
+                    <i class="far fa-hands-helping-hands text-teal-500 text-3xl mb-2"></i>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Always Sunny Support</h3>
+                    <p class="text-gray-600">Our dedicated customer support team is always ready to lend a helping hand.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<section id="testimonials" class="bg-gray-100 py-8">
+    <h1 class="text-2xl font-bold text-gray-800 mb-4 text-center">What our customers say</h1>
+    <div class="row">
+        <div class="col-md-4 my-3">
+            <div class="card bg-light rounded-5 ">
+                <div class="card-body">
+                    <div class="">
+                        <div class="d-flex align-items-center">
+                            <img src="{% static 'images/user.png' %}" width="75" height="65" class="rounded-circle" alt="">
+                            <div>
+                                <h6 class="p-0 m-0 ms-2">John</h6>
+                                <div class="ms-2 mt-1">
+                                    <i class="material-icons text-warning fs-5">star</i>
+                                    <i class="material-icons text-warning fs-5">star</i>
+                                    <i class="material-icons text-warning fs-5">star</i>
+                                    <i class="material-icons text-warning fs-5">star</i>
+                                    <i class="material-icons text-warning fs-5">star</i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="fw-bold mt-3">"Exceptional service, exquisite cuisine, and breathtaking views—truly a five-star experience"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 my-3">
+            <div class="card bg-light rounded-5 ">
+                <div class="card-body">
+                    <div class="">
+                        <div class="d-flex align-items-center">
+                            <img src="{% static 'images/user.png' %}" width="75" height="65" class="rounded-circle" alt="">
+                            <div>
+                                <h6 class="p-0 m-0 ms-2">Smith</h6>
+                                <div class="ms-2 mt-1">
+                                    <i class="material-icons text-warning fs-5">star</i>
+                                    <i class="material-icons text-warning fs-5">star</i>
+                                    <i class="material-icons text-warning fs-5">star</i>
+                                    <i class="material-icons text-warning fs-5">star</i>
+                                    <i class="material-icons text-warning fs-5">star</i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="fw-bold mt-3">"Incredible performance, sleek design, and unmatched value—my new favorite gadget!"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 my-3">
+            <div class="card bg-light rounded-5 ">
+                <div class="card-body">
+                    <div class="">
+                        <div class="d-flex align-items-center">
+                            <img src="{% static 'images/user.png' %}" width="75" height="65" class="rounded-circle" alt="">
+                            <div>
+                                <h6 class="p-0 m-0 ms-2">Samuel</h6>
+                                <div class="ms-2 mt-1">
+                                    <i class="material-icons text-warning fs-5">star</i>
+                                    <i class="material-icons text-warning fs-5">star</i>
+                                    <i class="material-icons text-warning fs-5">star</i>
+                                    <i class="material-icons text-warning fs-5">star</i>
+                                    <i class="material-icons text-warning fs-5">star</i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="fw-bold mt-3">"Captivating storyline, compelling characters, and stunning visuals—this game exceeded all my expectations!"</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 </div>
 
-
-            <div class="bg-white rounded-md px-4 py-4 shadow-md flex flex-col items-center">
-                <i class="far fa-dollar-sign text-teal-500 text-3xl mb-2"></i>
-                <h3 class="text-lg font-bold text-gray-800 mb-2">Budget-Friendly Blooms</h3>
-                <p class="text-gray-600">Competitively priced plans to suit any budget, from sprouting startups to towering enterprises.</p>
-            </div>
-            <div class="bg-white rounded-md px-4 py-4 shadow-md flex flex-col items-center">
-                <i class="far fa-hands-helping-hands text-teal-500 text-3xl mb-2"></i>
-                <h3 class="text-lg font-bold text-gray-800 mb-2">Always Sunny Support</h3>
-                <p class="text-gray-600">Our dedicated customer support team is always ready to lend a helping hand.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="testimonials" class="bg-gray-100 py-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl font-bold text-gray-800 mb-4">What our customers say</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            </div>
-    </div>
-</section>
-
-<section id="cta" class="bg-teal-500 py-8 text-white">
+<section id="cta" class="bg-teal-500 py-8 text-center mt-5 mb-5">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center">
         <h2 class="text-2xl font-bold mb-4">Ready to cultivate customer success?</h2>
-        <a href="/signup" class="inline-block bg-white hover:bg-gray-100 text-teal-500 font-bold py-2 px-4 rounded-md">Start your free trial</a>
+        <a href="/signup"
+            class="btn btn-primary">Start your free
+            trial</a>
     </div>
 </section>
 

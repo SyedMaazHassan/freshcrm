@@ -4,72 +4,94 @@
 {% block title %}FreshCRM{% endblock %}
 
 {% block content %}
-<div class="home-page flex flex-col items-center justify-center bg-cover bg-no-repeat h-screen" style="background-image: url(https://images.unsplash.com/photo-1555005180347-9f16d3133ba2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaW90b3RlZ2h0fHx4fGVufDB8fHw%3D&auto=format&fit=crop&w=750&q=80);">
-    <div class="max-w-lg text-center text-white py-16 shadow-lg rounded-lg bg-gradient-to-r from-teal-500 to-blue-500">
-        <h1 class="text-5xl font-bold mb-8">Unleash Customer Growth with FreshCRM</h1>
-        <p class="text-2xl mb-8">Stop juggling spreadsheets and empower your team with a powerful, intuitive CRM built for success.</p>
-        <a href="/signup" class="inline-block bg-white hover:bg-gray-100 text-teal-500 font-bold py-2 px-4 rounded-md">Start Your Free Trial</a>
+<div class="mt-4 rounded-5"
+    style="height: 450px; background-image: url(https://3.bp.blogspot.com/-RQ_2QKQufPQ/W-25Yu4tf7I/AAAAAAAAA80/adFgVFJ4O1MD7f--z0ZoplPV4RMx-wpTACHMYCw/s1600/how-to-start-a-small-business-small-business-and-online-presence.jpg);">
+    <div style="background-color: rgba(0, 0, 0, 0.719); height: 100%;"
+        class="rounded-5 d-flex align-items-center justify-content-center">
+        <div class="text-white text-center">
+            <h1 class="text-5xl font-bold mb-8">Unleash Customer Growth with FreshCRM</h1>
+            <p class="text-2xl mb-8">Stop juggling spreadsheets and empower your team with a powerful, intuitive CRM
+                built for success.</p>
+            <a href="/signup" class="btn btn-primary ">Start Your Free Trial</a>
+        </div>
     </div>
 </div>
 
-<section class="bg-gray-100 py-8">
+<section class="bg-gray-100 py-8 mt-5">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl font-bold text-gray-800 mb-4">Boost Your Sales with Powerful Features</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            <div class="bg-white rounded-md px-4 py-4 shadow-md">
-                <i class="far fa-magnet text-teal-500 text-3xl mb-2"></i>
-                <h3 class="text-lg font-bold text-gray-800 mb-2">Effortless Lead Capture</h3>
-                <p class="text-gray-600">Attract and convert leads from various sources without missing a beat.</p>
-            </div>
-            <div class="bg-white rounded-md px-4 py-4 shadow-md">
-                <i class="far fa-users text-teal-500 text-3xl mb-2"></i>
-                <h3 class="text-lg font-bold text-gray-800 mb-2">Seamless Contact Management</h3>
-                <p class="text-gray-600">Organize and nurture relationships with clear customer profiles and touchpoints.</p>
-            </div>
-            <div class="bg-white rounded-md px-4 py-4 shadow-md">
-                <i class="far fa-chart-line text-teal-500 text-3xl mb-2"></i>
-                <h3 class="text-lg font-bold text-gray-800 mb-2">Insightful Sales Pipelines</h3>
-                <p class="text-gray-600">Visualize your sales journey and track every opportunity with ease.</p>
-            </div>
-            <div class="bg-white rounded-md px-4 py-4 shadow-md">
-                <i class="far fa-tasks text-teal-500 text-3xl mb-2"></i>
-                <h3 class="text-lg font-bold text-gray-800 mb-2">Streamlined Task Management</h3>
-                <p class="text-gray-600">Assign, track, and collaborate on tasks to keep your team on top of their game.</p>
-            </div>
-            <div class="bg-white rounded-md px-4 py-4 shadow-md">
-                <i class="far fa-chart-bar text-teal-500 text-3xl mb-2"></i>
-                <h3 class="text-lg font-bold text-gray-800 mb-2">Actionable Data & Reports</h3>
-                <p class="text-gray-600">Gain valuable insights
-                    ...
+        <h1 class="text-2xl font-bold text-gray-800 mb-4 text-center">Boost Your Sales with Powerful Features</h1>
 
+        <div class="row">
+            <div class="col-md-6 my-5">
+                <img src="{% static 'images/img5.jpeg' %}" class="w-100 rounded-5" alt="">
+            </div>
+            <div class="col-md-6 my-5">
+                <div class="bg-white rounded-md px-4 py-2 shadow-md">
+                    <i class="far fa-magnet text-teal-500 text-3xl mb-2"></i>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Effortless Lead Capture</h3>
+                    <p class="text-gray-600">Attract and convert leads from various sources without missing a beat.</p>
+                </div>
+                <div class="bg-white rounded-md px-4 py-2 shadow-md">
+                    <i class="far fa-users text-teal-500 text-3xl mb-2"></i>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Seamless Contact Management</h3>
+                    <p class="text-gray-600">Organize and nurture relationships with clear customer profiles and
+                        touchpoints.</p>
+                </div>
+                <div class="bg-white rounded-md px-4 py-2 shadow-md">
+                    <i class="far fa-chart-line text-teal-500 text-3xl mb-2"></i>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Insightful Sales Pipelines</h3>
+                    <p class="text-gray-600">Visualize your sales journey and track every opportunity with ease.</p>
                 </div>
             </div>
-        </section>
+
         
-        <section class="bg-gray-200 py-8">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-2xl font-bold text-gray-800 mb-4">Getting Started is Easy</h2>
-                <ol class="list-decimal text-gray-600">
-                    <li>Create an account and log in for free.</li>
-                    <li>Invite your team members and assign roles.</li>
-                    <li>Import or manually add your existing contacts and leads.</li>
-                    <li>Build your sales pipeline and customize stages.</li>
-                    <li>Start managing tasks, activities, and communication.</li>
-                    <li>Track your progress and gain valuable insights.</li>
-                </ol>
+            <div class="col-md-6 my-3">
+                <div class="bg-white rounded-md px-4 py-2 shadow-md">
+                    <i class="far fa-tasks text-teal-500 text-3xl mb-2"></i>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Streamlined Task Management</h3>
+                    <p class="text-gray-600">Assign, track, and collaborate on tasks to keep your team on top of their
+                        game.</p>
+                </div>
+                <div class="bg-white rounded-md px-4 py-2 shadow-md">
+                    <i class="far fa-chart-bar text-teal-500 text-3xl mb-2"></i>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Actionable Data & Reports</h3>
+                    <p class="text-gray-600">Gain valuable insights
+                        ...
+                </div>
+                
             </div>
-        </section>
-        
-        <section class="bg-white rounded-lg shadow-md p-8 flex flex-col items-center text-center">
-            <h2 class="text-2xl font-bold text-gray-800 mb-4">"FreshCRM has transformed our sales process. We're closing more deals faster and our customer satisfaction is at an all-time high."</h2>
-            <p class="text-gray-600 mb-4"><strong>- Ketan Patel, CEO of FreshCRM.</strong></p>
-            <a href="/testimonials" class="inline-block bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded-md">Read More Success Stories</a>
-        </section>
-        
-        <div class="home-page flex flex-col items-center justify-center bg-gradient-to-r from-teal-500 to-blue-500 h-screen text-white py-16">
-            <h2 class="text-5xl font-bold mb-8">Stop Waiting, Start Growing. Begin Your FreshCRM Journey Today!</h2>
-            <a href="/signup" class="inline-block bg-white hover:bg-gray-100 text-teal-500 font-bold py-2 px-4 rounded-md">Start Your Free Trial</a>
+                <div class="col-md-6 my-5">
+                    <img src="{% static 'images/img6.jpeg' %}" class="w-100 rounded-5" alt="">
+                </div>
+
         </div>
-        
+</section>
+
+<section class="bg-gray-200 py-8 mt-5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-2xl font-bold text-gray-800 mb-4 text-center">Getting Started is Easy</h1>
+        <ol class="list-decimal text-gray-600">
+            <li>Create an account and log in for free.</li>
+            <li>Invite your team members and assign roles.</li>
+            <li>Import or manually add your existing contacts and leads.</li>
+            <li>Build your sales pipeline and customize stages.</li>
+            <li>Start managing tasks, activities, and communication.</li>
+            <li>Track your progress and gain valuable insights.</li>
+        </ol>
+    </div>
+</section>
+
+<section class="bg-light border rounded-5 p-4 text-center mt-5">
+    <h2 class="text-2xl font-bold text-gray-800 mb-4">"FreshCRM has transformed our sales process. We're closing more
+        deals faster and our customer satisfaction is at an all-time high."</h2>
+    <p class="text-gray-600 mb-4"><strong>- Ketan Patel, CEO of FreshCRM.</strong></p>
+</section>
+
+<div
+    class="text-center mt-5 mb-5">
+    <h2 class="text-5xl font-bold mb-8">Stop Waiting, Start Growing. Begin Your FreshCRM Journey Today!</h2>
+    <a href="/signup" class="btn btn-primary mt-3">Start
+        Your Free Trial</a>
+</div>
+
 {% endblock %}
-        
