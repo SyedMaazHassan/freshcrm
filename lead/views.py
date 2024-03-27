@@ -5,6 +5,8 @@ from .forms import AddLeadForm, WebScrapingForm
 from .models import Lead
 from django.utils import timezone
 from django.core.paginator import Paginator
+from webscrape.hktdc import HKTDC
+import json
 
 @login_required
 def add_lead(request):
@@ -69,10 +71,17 @@ def manual_lead(request):
                        
     return render(request, 'lead/manual_lead.html',{'form':form})
 
+
+
+
 @login_required
 def webscraping(request):
     form=WebScrapingForm()
-    
+
+    hktdc = HKTDC()
+    item_list_data = hktdc.get_item_list_json()
+
+
     if request.method == 'POST':
         form=WebScrapingForm(request.POST)
         if form.is_valid():
@@ -84,5 +93,10 @@ def webscraping(request):
             return redirect('add_lead')
         else:
             print(form.errors)
-    return render(request, 'lead/webscraping.html',{'form':form})
+
+    context = {
+        'form': form,
+        'item_list': item_list_data
+    }
+    return render(request, 'lead/webscraping.html', context)
 

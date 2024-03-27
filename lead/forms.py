@@ -23,13 +23,22 @@ class AddLeadForm(forms.ModelForm):
         
         
 class WebScrapingForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(WebScrapingForm, self).__init__(*args, **kwargs)
+        self.fields['category'].required = True
+        self.fields['subcategory'].required = True
+        self.fields['item'].required = True
+
     class Meta:
         model = Webscraping
-        fields = ('source_url',)
+        fields = ('source_url', 'category', 'subcategory', 'item')
         widgets = {
-            'source_url': forms.Select(choices=[('Web Site 1', 'HKTCD.com')], attrs={'class': 'form-input mt-1 block w-full bg-gray-100'}),
-            
+            'source_url': forms.Select(choices=[('HKTCD.com', 'HKTCD.com')], attrs={'class': 'form-input block w-full bg-gray-100'}),
+            'subcategory': forms.Select(choices=[('', '---------')], attrs={'class': 'form-input block w-full bg-gray-100'}),
+            'item': forms.Select(choices=[('', '---------')], attrs={'class': 'form-input block w-full bg-gray-100'})
         }
+
+
 """
 class HKTDCForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
