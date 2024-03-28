@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import RegexValidator
 from webscrape.hktdc import HKTDC
-import json
+import json, csv
 
 class Lead(models.Model):
     LOW='low'
@@ -82,6 +82,57 @@ class HKTDCRequest(models.Model):
     source_url = models.CharField(max_length=100)
     submitted_at = models.DateTimeField(auto_now_add=True)
     submitted_by = models.ForeignKey(User, related_name='hktdc_request',on_delete=models.CASCADE)
-    
+    status = models.CharField(max_length = 15, default="Failed")
+
+    def get_csv_data(self):
+        return HKTDCRequestResult.objects.filter(hktdc_request = self).first()
+
+
+    # Assuming `result_instance` is an instance of HKTDCRequestResult
+    def read_csv_file(self):
+        csv_data_object = self.get_csv_data()
+
+        csv_file = csv_data_object.response_file
+
+        # Ensure the file exists
+        if csv_file and hasattr(csv_file, 'path'):
+            csv_data = []
+            with open(csv_file.path, 'r', encoding='utf-8') as file:
+                reader = csv.DictReader(file)
+                for row in reader:
+                    csv_data.append(row)
+            return csv_data
+        else:
+            return []
+
+
     def scrape_suppliers(self):
+        hktdc = HKTDC(hktdc_request_obj=self)
+        item_list_data = hktdc.get_item_list_dict()
+        items = item_list_data[self.category][self.subcategory]
+        focused_item = None
+        for item in items:
+            if item['item_name'] == self.item:
+                focused_item = item
+
+        if not focused_item:
+            self.status = "Failed"
+            self.save()
+            return
+
+
+        updated_link = focused_item['item_url'].replace("Product-Catalog","Suppliers")            
+        hktdc.get_product_suppliers_for_model(
+            focused_item['item_name'], 
+            updated_link
+        )
+
+
+        self.status = "Success"
+        self.save()
         print("Scraping started...")
+
+
+class HKTDCRequestResult(models.Model):
+    response_file = models.FileField(upload_to = 'hktdc_results')
+    hktdc_request = models.ForeignKey(HKTDCRequest, on_delete= models.CASCADE, related_name = 'result')

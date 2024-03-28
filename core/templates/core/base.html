@@ -93,20 +93,29 @@
           <div class="position-sticky pt-3 sidebarMenu">
             <ul class="nav flex-column">
               <li class="nav-item my-1">
-                <a class="nav-link text-dark active-tab d-flex align-items-center" aria-current="page"
+                <a class="nav-link text-dark {% if page == 'dashboard' %}active-tab{% endif %} d-flex align-items-center" aria-current="page"
                   href="{% url 'dashboard' %}">
                   <i class="material-icons me-2 text-secondary">dashboard</i>
                   Dashboard
                 </a>
               </li>
+
               <li class="nav-item my-1">
-                <a class="nav-link text-dark d-flex align-items-center" href="{% url 'add_lead' %}">
+                <a class="nav-link text-dark d-flex {% if page == 'hktdc_task' %}active-tab{% endif %} align-items-center" href="{% url 'hktdc_tasks' %}">
+                  <i class="material-icons me-2 text-secondary">task</i>
+                  HKTDC Tasks
+                </a>
+              </li>
+
+
+              <li class="nav-item my-1">
+                <a class="nav-link text-dark d-flex {% if page == 'add-leads' %}active-tab{% endif %} align-items-center" href="{% url 'add_lead' %}">
                   <i class="material-icons me-2 text-secondary">add_circle</i>
                   Add Leads
                 </a>
               </li>
               <li class="nav-item my-1">
-                <a class="nav-link text-dark d-flex align-items-center" href="{% url 'leads_list' %}">
+                <a class="nav-link text-dark d-flex {% if page == 'leads' %}active-tab{% endif %} align-items-center" href="{% url 'leads_list' %}">
                   <i class="material-icons me-2 text-secondary">group</i>
                   Leads
                 </a>

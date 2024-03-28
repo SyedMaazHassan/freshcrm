@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Lead,Webscraping
+from .models import Lead,Webscraping, HKTDCRequest,HKTDCRequestResult
 
 #admin.site.register(Lead)
 @admin.register(Lead)
@@ -11,4 +11,5 @@ class LeadAdmin(admin.ModelAdmin):
     date_hierarchy = 'created_at'
     ordering = ('created_at',) 
 admin.site.register(Webscraping)
-
+admin.site.register(HKTDCRequest)
+admin.site.register(HKTDCRequestResult)

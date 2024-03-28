@@ -4,13 +4,18 @@ import csv
 import json
 import os
 from django.conf import settings
+from django.core.files.base import ContentFile
+
 
 class HKTDC:
-    def __init__(self, products_source=None):
+    def __init__(self, products_source=None, hktdc_request_obj=None):
         base_dir = settings.BASE_DIR
         if not products_source:
             products_source = os.path.join(base_dir, "products.csv")
-
+        
+        self.my_csv_content = []
+        self.supplier_output_file_name = "None"
+        self.hktdc_request_obj = hktdc_request_obj
         self.products_source = products_source
         self.base_url = 'https://sourcing.hktdc.com'
         self.headers={"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"}
@@ -112,8 +117,95 @@ class HKTDC:
             if write_header:
                 writer.writeheader()
             writer.writerows(result)    
+
+
+    def get_json_for_model(self, item_name, item, page):
+        item = json.loads(item.text)
+        self.supplier_output_file_name = item_name
+        datalist = item['props']['pageProps']['result']['dataList']
+        result = []
+        for item in datalist[str(page)]:
+            temp = {}
+            company_info = item['companyInfo']
+            temp["name"] = company_info['name']
+            temp["urn"] = company_info['urn']
+            temp["country"] = company_info['countryAndRegion']
+            temp["products"] = ";".join(list(set(company_info['productNames'])))
+            temp["brandname"] = ";".join(company_info['brandName']) if company_info['brandName'] else ""
+            result.append(temp)
+
+        self.my_csv_content += result
+
+            
+    def generate_csv_content(self, data):
+        import csv
+        from io import StringIO
         
-    
+        # Create an in-memory file-like object
+        csv_buffer = StringIO()
+        
+        # Create a CSV writer
+        csv_writer = csv.DictWriter(csv_buffer, fieldnames=data[0].keys())
+
+        # Write header
+        csv_writer.writeheader()
+        
+        # Write rows
+        csv_writer.writerows(data)
+        
+        # Get the CSV content
+        csv_content = csv_buffer.getvalue()
+        
+        # Close the buffer
+        csv_buffer.close()
+        
+        return csv_content
+
+
+    def get_product_suppliers_for_model(self, item_name, product_url):
+        r = requests.get(product_url, headers=self.headers)
+        soup = bs(r.text, 'html.parser')
+        records = soup.find("span", class_="search-result-total").text
+        item = soup.find("script", attrs={"id": "__NEXT_DATA__"})
+        if item:
+            self.get_json_for_model(item_name, item, page=1)
+        else:
+            print("No item found")
+            return
+        if records:
+            records = records.split(":")[-1].strip()
+            records = int(records)
+            pages, rem = divmod(records, 24)
+            if rem > 0:
+                pages += 1
+
+            if pages > 0:
+                for page in range(2, pages + 1):
+                    url = product_url + f"?page={page}"
+                    r = requests.get(url, headers=self.headers)
+                    soup = bs(r.text, 'html.parser')
+                    item = soup.find("script", attrs={"id": "__NEXT_DATA__"})
+                    if item:
+                        self.get_json_for_model(item_name, item, page)
+        else:
+            print("No more pages found")
+        
+        if self.my_csv_content and self.hktdc_request_obj:
+            self.save_response_in_model()
+
+    def save_response_in_model(self):
+        from lead.models import HKTDCRequestResult
+        hktdc_request_obj = self.hktdc_request_obj
+        csv_content = self.generate_csv_content(self.my_csv_content)
+        # Create a ContentFile object from the CSV content
+        csv_file_content = ContentFile(csv_content.encode())
+        # Create an instance of the model
+        csv_file = HKTDCRequestResult(hktdc_request=hktdc_request_obj)
+        # Save the ContentFile into the model's file field
+        csv_file.response_file.save(f"{self.supplier_output_file_name}.csv", csv_file_content)
+        csv_file.save()
+
+
     def get_product_suppliers(self,item_name,product_url):
         #function loop through each produc_url and collects the supplier data
         
@@ -218,9 +310,9 @@ class HKTDC:
 #                 continue
                 
 #             print(link)
-#             link = link.replace("Product-Catalog","Suppliers")
+            # link = link.replace("Product-Catalog","Suppliers")
             
-#             hktdc.get_product_suppliers(item_name,link)
+            # hktdc.get_product_suppliers(item_name,link)
             
             
     

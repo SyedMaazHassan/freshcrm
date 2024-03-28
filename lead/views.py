@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render,redirect
 from .forms import AddLeadForm, WebScrapingForm
-from .models import Lead
+from .models import Lead, HKTDCRequest
 from django.utils import timezone
 from django.core.paginator import Paginator
 from webscrape.hktdc import HKTDC
@@ -10,7 +10,10 @@ import json
 
 @login_required
 def add_lead(request):
-    return render(request, 'lead/add_lead.html')
+    context = {
+        'page': 'add-leads'
+    }
+    return render(request, 'lead/add_lead.html', context)
 
 
 
@@ -34,12 +37,16 @@ def leads_list(request):
         'leads': page_obj,
         'page_range': page_range,
         'previous_page_number': previous_page_number,
-        'next_page_number': next_page_number
+        'next_page_number': next_page_number,
+        'page':'leads'
     })
 
 @login_required
 def manage_leads(request):
-    return render(request, 'lead/leads.html')
+    context = {
+        'page': 'leads'
+    }
+    return render(request, 'lead/leads.html', context)
 
 """
 @login_required
@@ -90,13 +97,25 @@ def webscraping(request):
             webscraping.submitted_at=timezone.now()
             webscraping.save()
             
-            return redirect('add_lead')
+
+            # New HKTDC request
+            new_hktdc_request = HKTDCRequest.objects.create(
+                category = webscraping.category,
+                subcategory = webscraping.subcategory,
+                item = webscraping.item,
+                source_url = webscraping.source_url,
+                submitted_by = webscraping.submitted_by
+            )
+            new_hktdc_request.scrape_suppliers()
+            return redirect("hktdc_tasks_result", id=new_hktdc_request.id)
+
         else:
             print(form.errors)
 
     context = {
         'form': form,
-        'item_list': item_list_data
+        'item_list': item_list_data,
+        'page': 'add-leads'
     }
     return render(request, 'lead/webscraping.html', context)
 
