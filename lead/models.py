@@ -91,6 +91,8 @@ class HKTDCRequest(models.Model):
     # Assuming `result_instance` is an instance of HKTDCRequestResult
     def read_csv_file(self):
         csv_data_object = self.get_csv_data()
+        if not csv_data_object:
+            return []
 
         csv_file = csv_data_object.response_file
 
